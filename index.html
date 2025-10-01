@@ -96,6 +96,18 @@
             padding-bottom: 5rem;
         }
 
+        @media (max-width: 1023px) {
+            .section {
+                display: none;
+                padding-top: 1rem;
+                padding-bottom: 2rem;
+            }
+            .section.active {
+                display: block;
+                animation: fadeInSlideUp 0.5s ease-out forwards;
+            }
+        }
+
         .timeline-item {
             opacity: 0;
         }
@@ -130,8 +142,8 @@
     
     <div id="interactive-bg"></div>
 
-    <!-- Sidebar Navigation -->
-    <nav class="fixed top-0 left-0 h-full bg-gray-900/80 backdrop-blur-md w-64 border-r border-gray-800 p-6 hidden lg:block z-50">
+    <!-- Desktop Sidebar Navigation -->
+    <nav id="desktop-nav" class="fixed top-0 left-0 h-full bg-gray-900/80 backdrop-blur-md w-64 border-r border-gray-800 p-6 hidden lg:block z-50">
         <div class="flex items-center gap-3 mb-10">
             <div class="p-2 bg-sky-500/10 rounded-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-400"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
@@ -149,11 +161,39 @@
         </ul>
     </nav>
 
+    <!-- Mobile Header -->
+    <header id="mobile-header" class="lg:hidden fixed top-0 left-0 w-full bg-gray-900/80 backdrop-blur-md border-b border-gray-800 p-4 flex items-center justify-between z-40">
+        <h1 id="mobile-title" class="text-xl font-bold text-white">Overview</h1>
+        <button id="menu-btn" class="p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden fixed top-0 left-0 w-full h-full bg-gray-950/95 backdrop-blur-lg z-50 p-6 transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex items-center justify-between mb-10">
+            <h1 class="text-xl font-bold">Circuit4</h1>
+            <button id="close-btn" class="p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <ul id="mobile-nav-links" class="space-y-4">
+             <li><a href="#overview" class="nav-link text-xl p-3 block rounded-lg">Overview</a></li>
+            <li><a href="#team" class="nav-link text-xl p-3 block rounded-lg">Team</a></li>
+            <li><a href="#milestones" class="nav-link text-xl p-3 block rounded-lg">Milestones</a></li>
+            <li><a href="#deadlines" class="nav-link text-xl p-3 block rounded-lg">Deadlines</a></li>
+            <li><a href="#meetings" class="nav-link text-xl p-3 block rounded-lg">Meetings</a></li>
+            <li><a href="#tools" class="nav-link text-xl p-3 block rounded-lg">Tools & Resources</a></li>
+            <li><a href="#logs" class="nav-link text-xl p-3 block rounded-lg">Meeting Logs</a></li>
+        </ul>
+    </div>
+
+
     <!-- Main Content -->
-    <main class="w-full lg:ml-64 p-6 sm:p-10 lg:p-16">
+    <main class="w-full lg:ml-64 p-6 pt-24 sm:p-10 lg:p-16 lg:pt-10">
 
         <!-- Section 1: Project Overview -->
-        <section id="overview" class="section flex flex-col justify-center items-center text-center min-h-screen">
+        <section id="overview" class="section active lg:flex flex-col justify-center items-center text-center min-h-screen">
             <h1 class="text-4xl sm:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-cyan-300 mb-4">Project Dataflow Animation</h1>
             <p class="text-lg text-gray-400 max-w-3xl mb-12">An interactive demonstration of our system. Watch the data packets move from the sensor to the dashboard in real-time as you scroll.</p>
             
@@ -250,9 +290,9 @@
         <section id="meetings" class="section">
             <h2 class="text-3xl font-bold mb-8">Weekly Sync Meetings</h2>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <!-- Upcoming Meeting Card (Sticky) -->
+                <!-- Upcoming Meeting Card (Sticky on desktop) -->
                 <div class="lg:col-span-1">
-                    <div class="sticky top-24">
+                    <div class="lg:sticky top-24">
                          <h3 class="text-xl font-bold mb-4 text-gray-300">Next Meeting</h3>
                          <div id="upcoming-meeting-card" class="futuristic-card p-6 rounded-2xl">
                             <!-- Upcoming meeting details will be injected by JS -->
@@ -405,6 +445,47 @@
             interactiveBg.style.background = `radial-gradient(600px at ${clientX}px ${clientY}px, rgba(29, 78, 216, 0.15), transparent 80%)`;
         });
 
+        // --- Mobile Navigation ---
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.getElementById('mobile-nav-links').querySelectorAll('a');
+        const mobileTitle = document.getElementById('mobile-title');
+        const sections = document.querySelectorAll('.section');
+
+        function openMenu() {
+            mobileMenu.classList.remove('-translate-x-full');
+        }
+        function closeMenu() {
+            mobileMenu.classList.add('-translate-x-full');
+        }
+
+        menuBtn.addEventListener('click', openMenu);
+        closeBtn.addEventListener('click', closeMenu);
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                    if(section.id === targetId) {
+                        section.classList.add('active');
+                    }
+                });
+
+                mobileTitle.textContent = link.textContent;
+                
+                mobileNavLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+
+                closeMenu();
+                window.scrollTo(0, 0);
+            });
+        });
+
+
         // --- Countdown Timers ---
         function startCountdown(elementId, targetDate) {
             const countdownElement = document.getElementById(elementId);
@@ -438,16 +519,16 @@
         // --- Milestones Data ---
         const milestones = [
             { week: 1, dates: 'Oct 1 - Oct 7', title: 'Kickoff & Setup', meetingTitle: 'Project Kickoff & Planning', meetingDesc: 'Assigning roles, confirming our tech stack, and planning initial setup.', goal: 'Finalize roles & tech stack. All team members set up their individual development environments.' },
-            { week: 2, dates: 'Oct 8 - Oct 14', title: 'Sensor Script Dev', meetingTitle: 'Sensor Development Sync', meetingDesc: 'Reviewing progress on the Python data simulation script and discussing any blockers.', goal: 'Ali develops the core Python script for data simulation. Others research their respective components.' },
-            { week: 3, dates: 'Oct 15 - Oct 21', title: 'Backend & MQTT Setup', meetingTitle: 'Backend & Comms Check-in', meetingDesc: 'Ensuring the MQTT broker is operational and discussing the data publishing strategy.', goal: 'Favour sets up the Mosquitto broker. Ali integrates MQTT publishing into the script.' },
-            { week: 4, dates: 'Oct 22 - Oct 28', title: 'Dashboard Scaffolding', meetingTitle: 'Dashboard Design Review', meetingDesc: 'Bless will present the initial Node-RED dashboard layout for team feedback.', goal: 'Bless sets up Node-RED and creates the basic dashboard layout and UI components.' },
-            { week: 5, dates: 'Oct 29 - Nov 4', title: 'Component Completion', meetingTitle: 'Individual Component Demo', meetingDesc: 'Each lead will briefly demonstrate their working component before integration begins.', goal: 'All individual components are functional. Ololade begins drafting the technical poster layout.' },
-            { week: 6, dates: 'Nov 5 - Nov 11', title: 'Integration: Part 1', meetingTitle: 'Integration Sync (Sensor to Broker)', meetingDesc: 'Focusing on connecting the Python script to the MQTT broker successfully.', goal: 'Connect the Python script to the MQTT broker. Verify messages are being sent and received correctly.' },
-            { week: 7, dates: 'Nov 12 - Nov 18', title: 'Integration: Part 2', meetingTitle: 'End-to-End System Test', meetingDesc: 'Connecting the dashboard to the broker to achieve the first full end-to-end data flow.', goal: 'Connect the Node-RED dashboard to MQTT. Achieve a full end-to-end data flow.' },
-            { week: 8, dates: 'Nov 19 - Nov 25', title: 'Refinement & Poster', meetingTitle: 'UI & Poster Content Review', meetingDesc: 'Finalizing the dashboard\'s look and feel, and gathering all content for the technical poster.', goal: 'Refine the dashboard UI. Team provides content (diagrams, roles) to Ololade for the poster.' },
-            { week: 9, dates: 'Nov 26 - Dec 2', title: 'Demo Recording & Slides', meetingTitle: 'Demo & Presentation Planning', meetingDesc: 'Planning the script for the video demo and reviewing the first draft of the presentation slides.', goal: 'Record the 10-minute video demo. Ololade creates the first draft of the presentation slides.' },
-            { week: 10, dates: 'Dec 3 - Dec 9', title: 'Practice & Reflection', meetingTitle: 'First Full Presentation Rehearsal', meetingDesc: 'Conducting a timed run-through of the presentation and demo. Discussing individual reflections.', goal: 'Rehearse the presentation as a team. All members write their individual reflection logs.' },
-            { week: 11, dates: 'Dec 10 - Dec 14', title: 'Final Polish & Rehearsal', meetingTitle: 'Final Presentation & Viva Prep', meetingDesc: 'The last full rehearsal before the viva. Final check on all deliverables.', goal: 'Final run-throughs of the presentation and final checks on all submitted materials.' }
+            { week: 2, dates: 'Oct 8 - Oct 14', title: 'Hardware & Data Structure', meetingTitle: 'Hardware & Data Sync', meetingDesc: 'Reviewing hardware choices and finalizing the MQTT topic and JSON structure.', goal: 'Favour procures hardware. Ali defines data structures. Initial code setup begins.' },
+            { week: 3, dates: 'Oct 15 - Oct 21', title: 'Local Sensor Reading', meetingTitle: 'Local Hardware Demo', meetingDesc: 'Favour demonstrates reading sensor data and displaying it on the LCD screen.', goal: 'Successfully read temperature/humidity from the DHT22 and display it locally on the LCD.' },
+            { week: 4, dates: 'Oct 22 - Oct 28', title: 'MQTT Publishing', meetingTitle: 'First Data Transmission', meetingDesc: 'Demonstrating the Arduino publishing sensor data to the Mosquitto MQTT broker.', goal: 'Favour and Ali collaborate to send sensor data from the ESP32 to the broker.' },
+            { week: 5, dates: 'Oct 29 - Nov 4', title: 'Dashboard Connection', meetingTitle: 'Dashboard Data Reception', meetingDesc: 'Bless demonstrates the Node-RED dashboard subscribing to and displaying the live data.', goal: 'Bless connects the dashboard to the MQTT broker and visualizes the incoming data.' },
+            { week: 6, dates: 'Nov 5 - Nov 11', title: 'Full System Integration', meetingTitle: 'End-to-End System Test', meetingDesc: 'Conducting the first full test of the hardware, broker, and dashboard together.', goal: 'Achieve a stable, end-to-end data flow from the physical sensor to the web dashboard.' },
+            { week: 7, dates: 'Nov 12 - Nov 18', title: 'System Refinement', meetingTitle: 'Bug Bash & UI Polish', meetingDesc: 'Identifying and fixing bugs. Bless refines the dashboard UI based on team feedback.', goal: 'Improve system stability and the aesthetic of the Node-RED dashboard.' },
+            { week: 8, dates: 'Nov 19 - Nov 25', title: 'Poster & Documentation', meetingTitle: 'Poster Content Review', meetingDesc: 'Finalizing the system architecture diagram and gathering all content for the technical poster.', goal: 'Complete the first draft of the technical poster. All team members contribute content.' },
+            { week: 9, dates: 'Nov 26 - Dec 2', title: 'Demo Recording', meetingTitle: 'Demo Video Planning', meetingDesc: 'Storyboarding and recording the 10-minute project demonstration video.', goal: 'Record and edit a clear and comprehensive video demonstration of the working system.' },
+            { week: 10, dates: 'Dec 3 - Dec 9', title: 'Presentation & Reflection', meetingTitle: 'Presentation Rehearsal', meetingDesc: 'First full run-through of the final presentation. Finalizing individual reflection logs.', goal: 'Complete presentation slides. All members finish their individual reflective logs.' },
+            { week: 11, dates: 'Dec 10 - Dec 14', title: 'Final Practice', meetingTitle: 'Final Viva Prep', meetingDesc: 'Final rehearsals of the presentation, focusing on timing and anticipating viva questions.', goal: 'Team is confident and prepared for the presentation and viva. All deliverables are finalized.' }
         ];
 
         // --- Animated Milestones ---
@@ -604,9 +685,8 @@
         });
 
 
-        // --- Active Nav Link on Scroll & Overview Animation ---
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
+        // --- Active Nav Link on Scroll (Desktop only) & Overview Animation ---
+        const desktopNavLinks = document.querySelectorAll('#desktop-nav .nav-link');
         const dataflowAnimation = document.getElementById('dataflow-animation');
         const path1 = document.getElementById('path1');
         const path2 = document.getElementById('path2');
@@ -616,17 +696,13 @@
         let dataflowInterval = null;
 
         function runDataflowAnimation() {
-            // Reset path animations by removing and re-adding the class
             path1.classList.remove('animate');
             path2.classList.remove('animate');
-            void path1.offsetWidth; // Trigger a reflow to restart the CSS animation
+            void path1.offsetWidth; 
             path1.classList.add('animate');
             path2.classList.add('animate');
-
-            // Make packets invisible before restarting
             document.getElementById('packet1').style.opacity = 0;
             document.getElementById('packet2').style.opacity = 0;
-            
             setTimeout(() => {
                 document.getElementById('packet1').style.opacity = 1;
                 document.getElementById('packet2').style.opacity = 1;
@@ -637,8 +713,8 @@
 
         function startDataflowLoop() {
             if (!dataflowInterval) {
-                runDataflowAnimation(); // Run immediately the first time
-                dataflowInterval = setInterval(runDataflowAnimation, 4000); // Loop every 4 seconds
+                runDataflowAnimation();
+                dataflowInterval = setInterval(runDataflowAnimation, 4000);
             }
         }
 
@@ -663,8 +739,8 @@
 
         const navObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navLinks.forEach(link => {
+                if (entry.isIntersecting && window.innerWidth >= 1024) {
+                    desktopNavLinks.forEach(link => {
                         link.classList.remove('active');
                         if (link.getAttribute('href').substring(1) === entry.target.id) {
                             link.classList.add('active');
