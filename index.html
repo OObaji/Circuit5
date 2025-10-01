@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuit4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @keyframes background-pan {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes data-flow {
+            from {
+                stroke-dashoffset: 600;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712; /* gray-950 */
+            background-image: radial-gradient(circle at 1px 1px, #374151 1px, transparent 0);
+            background-size: 2rem 2rem;
+            color: #f9fafb; /* gray-50 */
+        }
+
+        #interactive-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: radial-gradient(600px at 50% 50%, rgba(29, 78, 216, 0.15), transparent 80%);
+            transition: background 0.2s ease-out;
+        }
+        
+        .futuristic-card {
+            background-color: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(55, 65, 81, 0.4);
+            transition: all 0.3s ease;
+        }
+        .futuristic-card:hover {
+            border-color: rgba(56, 189, 248, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+        }
+
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link.active {
+            color: #0ea5e9; /* sky-500 */
+            background-color: rgba(14, 165, 233, 0.1);
+        }
+        .nav-link:hover {
+             color: #38bdf8; /* sky-400 */
+             background-color: rgba(56, 189, 248, 0.05);
+        }
+        
+        .animated-path {
+            stroke-dasharray: 600;
+            stroke-dashoffset: 600;
+        }
+        .animated-path.animate {
+            animation: data-flow 2s ease-out forwards;
+        }
+        
+        .section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        .timeline-item {
+            opacity: 0;
+        }
+        .timeline-item.visible {
+            animation: fadeInSlideUp 0.5s ease-out forwards;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111827; /* gray-900 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #374151; /* gray-700 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4b5563; /* gray-600 */
+        }
+    </style>
+</head>
+<body class="flex">
+    
+    <div id="interactive-bg"></div>
+
+    <!-- Sidebar Navigation -->
+    <nav class="fixed top-0 left-0 h-full bg-gray-900/80 backdrop-blur-md w-64 border-r border-gray-800 p-6 hidden lg:block z-50">
+        <div class="flex items-center gap-3 mb-10">
+            <div class="p-2 bg-sky-500/10 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-400"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            </div>
+            <h1 class="text-xl font-bold">Circuit4</h1>
+        </div>
+        <ul class="space-y-2">
+            <li><a href="#overview" class="nav-link active flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Overview</a></li>
+            <li><a href="#team" class="nav-link flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Team</a></li>
+            <li><a href="#milestones" class="nav-link flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Milestones</a></li>
+            <li><a href="#deadlines" class="nav-link flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Deadlines</a></li>
+            <li><a href="#meetings" class="nav-link flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Meetings</a></li>
+            <li><a href="#tools" class="nav-link flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Tools & Resources</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="w-full lg:ml-64 p-6 sm:p-10 lg:p-16">
+
+        <!-- Section 1: Project Overview -->
+        <section id="overview" class="section flex flex-col justify-center items-center text-center min-h-screen">
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-cyan-300 mb-4">Project Dataflow Animation</h1>
+            <p class="text-lg text-gray-400 max-w-3xl mb-12">An interactive demonstration of our system. Watch the data packets move from the sensor to the dashboard in real-time as you scroll.</p>
+            
+            <div id="dataflow-animation" class="w-full max-w-4xl p-8 futuristic-card rounded-2xl">
+                <svg viewBox="0 0 800 300" class="w-full">
+                    <!-- Paths -->
+                    <path id="path1" class="animated-path" d="M100 150 H 350" fill="none" stroke="#374151" stroke-width="2" stroke-dasharray="5,5"/>
+                    <path id="path2" class="animated-path" d="M450 150 H 700" fill="none" stroke="#374151" stroke-width="2" stroke-dasharray="5,5"/>
+                    
+                    <!-- Nodes -->
+                    <g class="cursor-pointer">
+                        <circle cx="100" cy="150" r="40" fill="#1f2937" stroke="#38bdf8" stroke-width="2"/>
+                        <text x="100" y="155" font-family="Inter" font-size="14" fill="#f9fafb" text-anchor="middle">Sensor</text>
+                    </g>
+                    <g class="cursor-pointer">
+                        <rect x="360" y="110" width="80" height="80" rx="10" fill="#1f2937" stroke="#38bdf8" stroke-width="2"/>
+                        <text x="400" y="155" font-family="Inter" font-size="14" fill="#f9fafb" text-anchor="middle">MQTT</text>
+                    </g>
+                     <g class="cursor-pointer">
+                        <circle cx="700" cy="150" r="40" fill="#1f2937" stroke="#38bdf8" stroke-width="2"/>
+                        <text x="700" y="155" font-family="Inter" font-size="14" fill="#f9fafb" text-anchor="middle">Dashboard</text>
+                    </g>
+
+                    <!-- Data Packets -->
+                    <circle id="packet1" r="6" fill="#0ea5e9" class="opacity-0"><animateMotion dur="2s" begin="indefinite" repeatCount="1" fill="freeze"><mpath xlink:href="#path1"/></animateMotion></circle>
+                    <circle id="packet2" r="6" fill="#0ea5e9" class="opacity-0"><animateMotion dur="2s" begin="indefinite" repeatCount="1" fill="freeze"><mpath xlink:href="#path2"/></animateMotion></circle>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Section 2: Team -->
+        <section id="team" class="section">
+            <h2 class="text-3xl font-bold mb-8">Meet the Team</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div class="futuristic-card p-6 rounded-2xl text-center">
+                    <h3 class="font-bold text-lg text-white">Sensor & Data Lead</h3>
+                    <p class="text-sky-300 mt-1">Ali</p>
+                    <p class="text-gray-400 text-sm mt-3">Writes the Python script to generate and publish sensor data.</p>
+                </div>
+                <div class="futuristic-card p-6 rounded-2xl text-center">
+                    <h3 class="font-bold text-lg text-white">Backend & Comms Lead</h3>
+                    <p class="text-sky-300 mt-1">Favour</p>
+                    <p class="text-gray-400 text-sm mt-3">Manages the MQTT broker and ensures reliable data communication.</p>
+                </div>
+                <div class="futuristic-card p-6 rounded-2xl text-center">
+                    <h3 class="font-bold text-lg text-white">Dashboard & Viz Lead</h3>
+                    <p class="text-sky-300 mt-1">Bless</p>
+                    <p class="text-gray-400 text-sm mt-3">Designs and builds the Node-RED dashboard for data visualization.</p>
+                </div>
+                <div class="futuristic-card p-6 rounded-2xl text-center">
+                    <h3 class="font-bold text-lg text-white">Project Manager & Docs</h3>
+                    <p class="text-sky-300 mt-1">Ololade</p>
+                    <p class="text-gray-400 text-sm mt-3">Oversees the timeline, organizes meetings, and leads documentation.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 3: Milestones -->
+        <section id="milestones" class="section">
+            <h2 class="text-3xl font-bold mb-8">Project Milestones</h2>
+            <div id="timeline-container" class="relative border-l-2 border-sky-900 ml-4">
+                <!-- Milestones will be injected here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Section 4: Deadlines -->
+        <section id="deadlines" class="section">
+            <h2 class="text-3xl font-bold mb-8">Key Deadlines</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="futuristic-card p-6 rounded-2xl text-center border-red-700/60">
+                    <h3 class="text-xl font-bold text-red-300">Group Presentation & Viva</h3>
+                    <p class="text-lg text-gray-300">December 15th, 2025</p>
+                    <div id="countdown-viva" class="text-4xl font-extrabold text-white mt-4 grid grid-cols-4 gap-2">
+                        <div><span id="viva-days"></span><p class="text-sm font-normal">Days</p></div>
+                        <div><span id="viva-hours"></span><p class="text-sm font-normal">Hours</p></div>
+                        <div><span id="viva-minutes"></span><p class="text-sm font-normal">Mins</p></div>
+                        <div><span id="viva-seconds"></span><p class="text-sm font-normal">Secs</p></div>
+                    </div>
+                </div>
+                <div class="futuristic-card p-6 rounded-2xl text-center border-red-700/60">
+                    <h3 class="text-xl font-bold text-red-300">Final Project Submission</h3>
+                    <p class="text-lg text-gray-300">December 17th, 2025</p>
+                    <div id="countdown-submission" class="text-4xl font-extrabold text-white mt-4 grid grid-cols-4 gap-2">
+                        <div><span id="submission-days"></span><p class="text-sm font-normal">Days</p></div>
+                        <div><span id="submission-hours"></span><p class="text-sm font-normal">Hours</p></div>
+                        <div><span id="submission-minutes"></span><p class="text-sm font-normal">Mins</p></div>
+                        <div><span id="submission-seconds"></span><p class="text-sm font-normal">Secs</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Meetings -->
+        <section id="meetings" class="section">
+            <h2 class="text-3xl font-bold mb-8">Weekly Sync Meetings</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <!-- Upcoming Meeting Card (Sticky) -->
+                <div class="lg:col-span-1">
+                    <div class="sticky top-24">
+                         <h3 class="text-xl font-bold mb-4 text-gray-300">Next Meeting</h3>
+                         <div id="upcoming-meeting-card" class="futuristic-card p-6 rounded-2xl">
+                            <!-- Upcoming meeting details will be injected by JS -->
+                         </div>
+                    </div>
+                </div>
+                <!-- Meeting List -->
+                <div id="meeting-list-container" class="lg:col-span-2 space-y-6">
+                    <!-- Meeting items will be injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Tools -->
+        <section id="tools" class="section">
+             <h2 class="text-3xl font-bold mb-8">Tools & Resources</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                 <a href="https://docs.python.org/3/tutorial/" target="_blank" rel="noopener noreferrer" class="futuristic-card p-6 rounded-2xl flex items-center gap-4">
+                    <img src="https://www.python.org/static/favicon.ico" class="w-10 h-10"/>
+                    <div>
+                        <h3 class="font-bold text-lg text-white">Python</h3>
+                        <p class="text-gray-400 text-sm">For simulating sensor data. Click to view docs.</p>
+                    </div>
+                 </a>
+                 <a href="https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php" target="_blank" rel="noopener noreferrer" class="futuristic-card p-6 rounded-2xl flex items-center gap-4">
+                    <div class="w-10 h-10 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><path d="M10.6 13.4c-.9-.9-.9-2.3 0-3.1"/><path d="M13.4 10.6c.9.9.9 2.3 0 3.1"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1"/><circle cx="12" cy="12" r="1"/></svg>
+                    </div>
+                     <div>
+                        <h3 class="font-bold text-lg text-white">Paho-MQTT</h3>
+                        <p class="text-gray-400 text-sm">Python client for MQTT communication.</p>
+                    </div>
+                 </a>
+                 <a href="https://mosquitto.org/documentation/" target="_blank" rel="noopener noreferrer" class="futuristic-card p-6 rounded-2xl flex items-center gap-4">
+                     <div class="w-10 h-10 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                            <rect x="2" y="9" width="20" height="6" rx="2"></rect>
+                            <path d="M12 15v3"></path>
+                            <path d="M10 9V6a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v3"></path>
+                            <path d="M7 12h.01"></path>
+                            <path d="M17 12h.01"></path>
+                        </svg>
+                     </div>
+                     <div>
+                        <h3 class="font-bold text-lg text-white">Mosquitto</h3>
+                        <p class="text-gray-400 text-sm">The MQTT broker that will route our messages.</p>
+                    </div>
+                 </a>
+                 <a href="https://nodered.org/docs/user-guide/editor/workspace/dashboard" target="_blank" rel="noopener noreferrer" class="futuristic-card p-6 rounded-2xl flex items-center gap-4">
+                     <img src="https://nodered.org/about/resources/media/node-red-icon-2.png" class="w-10 h-10"/>
+                     <div>
+                        <h3 class="font-bold text-lg text-white">Node-RED</h3>
+                        <p class="text-gray-400 text-sm">For building the visual dashboard.</p>
+                    </div>
+                 </a>
+                 <a href="https://drive.google.com/drive/folders/1UIEchCpz2tR_rZVRPtStpwThQbOSdcfe?usp=sharing" target="_blank" rel="noopener noreferrer" class="futuristic-card p-6 rounded-2xl flex items-center gap-4">
+                    <div class="w-10 h-10 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M13.4 2H6.6l-3.2 9h17.2l-3.2-9Z"></path><path d="m3.4 12 5.1 8.8.5-1-5.1-8.8Z"></path><path d="m20.6 12-5.1 8.8-.5-1 5.1-8.8Z"></path><path d="m12 21.8-.5-1 3.2-5.8h-5.4l3.2 5.8.5 1Z"></path></svg>
+                    </div>
+                     <div>
+                        <h3 class="font-bold text-lg text-white">Google Drive</h3>
+                        <p class="text-gray-400 text-sm">Shared folder for all project files and assets.</p>
+                    </div>
+                 </a>
+             </div>
+        </section>
+
+    </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Interactive Background ---
+        const interactiveBg = document.getElementById('interactive-bg');
+        window.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            interactiveBg.style.background = `radial-gradient(600px at ${clientX}px ${clientY}px, rgba(29, 78, 216, 0.15), transparent 80%)`;
+        });
+
+        // --- Countdown Timers ---
+        function startCountdown(elementId, targetDate) {
+            const countdownElement = document.getElementById(elementId);
+            if (!countdownElement) return;
+
+            const daysEl = document.getElementById(`${elementId.split('-')[1]}-days`);
+            const hoursEl = document.getElementById(`${elementId.split('-')[1]}-hours`);
+            const minutesEl = document.getElementById(`${elementId.split('-')[1]}-minutes`);
+            const secondsEl = document.getElementById(`${elementId.split('-')[1]}-seconds`);
+
+            const interval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = new Date(targetDate).getTime() - now;
+
+                if (distance < 0) {
+                    clearInterval(interval);
+                    countdownElement.innerHTML = "<p class='text-lg'>Deadline Passed</p>";
+                    return;
+                }
+
+                daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            }, 1000);
+        }
+
+        startCountdown('countdown-viva', '2025-12-15T09:00:00');
+        startCountdown('countdown-submission', '2025-12-17T23:59:59');
+        
+        // --- Milestones Data ---
+        const milestones = [
+            { week: 1, dates: 'Oct 1 - Oct 7', title: 'Kickoff & Setup', meetingTitle: 'Project Kickoff & Planning', meetingDesc: 'Assigning roles, confirming our tech stack, and planning initial setup.', goal: 'Finalize roles & tech stack. All team members set up their individual development environments.' },
+            { week: 2, dates: 'Oct 8 - Oct 14', title: 'Sensor Script Dev', meetingTitle: 'Sensor Development Sync', meetingDesc: 'Reviewing progress on the Python data simulation script and discussing any blockers.', goal: 'Ali develops the core Python script for data simulation. Others research their respective components.' },
+            { week: 3, dates: 'Oct 15 - Oct 21', title: 'Backend & MQTT Setup', meetingTitle: 'Backend & Comms Check-in', meetingDesc: 'Ensuring the MQTT broker is operational and discussing the data publishing strategy.', goal: 'Favour sets up the Mosquitto broker. Ali integrates MQTT publishing into the script.' },
+            { week: 4, dates: 'Oct 22 - Oct 28', title: 'Dashboard Scaffolding', meetingTitle: 'Dashboard Design Review', meetingDesc: 'Bless will present the initial Node-RED dashboard layout for team feedback.', goal: 'Bless sets up Node-RED and creates the basic dashboard layout and UI components.' },
+            { week: 5, dates: 'Oct 29 - Nov 4', title: 'Component Completion', meetingTitle: 'Individual Component Demo', meetingDesc: 'Each lead will briefly demonstrate their working component before integration begins.', goal: 'All individual components are functional. Ololade begins drafting the technical poster layout.' },
+            { week: 6, dates: 'Nov 5 - Nov 11', title: 'Integration: Part 1', meetingTitle: 'Integration Sync (Sensor to Broker)', meetingDesc: 'Focusing on connecting the Python script to the MQTT broker successfully.', goal: 'Connect the Python script to the MQTT broker. Verify messages are being sent and received correctly.' },
+            { week: 7, dates: 'Nov 12 - Nov 18', title: 'Integration: Part 2', meetingTitle: 'End-to-End System Test', meetingDesc: 'Connecting the dashboard to the broker to achieve the first full end-to-end data flow.', goal: 'Connect the Node-RED dashboard to MQTT. Achieve a full end-to-end data flow.' },
+            { week: 8, dates: 'Nov 19 - Nov 25', title: 'Refinement & Poster', meetingTitle: 'UI & Poster Content Review', meetingDesc: 'Finalizing the dashboard\'s look and feel, and gathering all content for the technical poster.', goal: 'Refine the dashboard UI. Team provides content (diagrams, roles) to Ololade for the poster.' },
+            { week: 9, dates: 'Nov 26 - Dec 2', title: 'Demo Recording & Slides', meetingTitle: 'Demo & Presentation Planning', meetingDesc: 'Planning the script for the video demo and reviewing the first draft of the presentation slides.', goal: 'Record the 10-minute video demo. Ololade creates the first draft of the presentation slides.' },
+            { week: 10, dates: 'Dec 3 - Dec 9', title: 'Practice & Reflection', meetingTitle: 'First Full Presentation Rehearsal', meetingDesc: 'Conducting a timed run-through of the presentation and demo. Discussing individual reflections.', goal: 'Rehearse the presentation as a team. All members write their individual reflection logs.' },
+            { week: 11, dates: 'Dec 10 - Dec 14', title: 'Final Polish & Rehearsal', meetingTitle: 'Final Presentation & Viva Prep', meetingDesc: 'The last full rehearsal before the viva. Final check on all deliverables.', goal: 'Final run-throughs of the presentation and final checks on all submitted materials.' }
+        ];
+
+        // --- Animated Milestones ---
+        const timelineContainer = document.getElementById('timeline-container');
+        const today = new Date();
+        const startDate = new Date('2025-10-01');
+        const weekNumber = Math.floor((today - startDate) / (1000 * 60 * 60 * 24 * 7)) + 1;
+
+        milestones.forEach(milestone => {
+            const isCurrent = milestone.week === weekNumber;
+            const endDateStr = milestone.dates.split(' - ')[1];
+            const milestoneEndDate = new Date(`${endDateStr}, 2025 23:59:59`);
+            const isPast = milestoneEndDate < today && !isCurrent;
+
+            let iconSvg;
+            let ringColorClass = 'ring-gray-900';
+            let bgColorClass = 'bg-gray-700';
+            
+            if (isPast) {
+                iconSvg = `<svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>`;
+                bgColorClass = 'bg-green-900';
+                ringColorClass = 'ring-green-900/50';
+            } else if (isCurrent) {
+                iconSvg = `<svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>`;
+                bgColorClass = 'bg-sky-500';
+                ringColorClass = 'ring-sky-400';
+            } else {
+                 iconSvg = `<svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>`;
+            }
+
+            const item = document.createElement('div');
+            item.className = `timeline-item mb-10 ml-8 ${isPast ? 'opacity-60' : ''}`;
+            item.innerHTML = `
+                <span class="absolute flex items-center justify-center w-8 h-8 ${bgColorClass} rounded-full -left-4 ring-4 ${ringColorClass}">
+                    ${iconSvg}
+                </span>
+                <div class="futuristic-card p-6 rounded-xl ${isCurrent ? 'border-sky-500' : ''}">
+                    <h3 class="text-lg font-semibold ${isPast ? 'text-gray-400' : 'text-white'}">Week ${milestone.week}: ${milestone.title}</h3>
+                    <time class="block mb-2 text-sm font-normal leading-none text-gray-400">${milestone.dates}</time>
+                    <p class="text-base font-normal text-gray-300">${milestone.goal}</p>
+                </div>
+            `;
+            timelineContainer.appendChild(item);
+        });
+
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 150); // Stagger the animation
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('#milestones .timeline-item').forEach(item => {
+            timelineObserver.observe(item);
+        });
+
+        // --- Weekly Meetings ---
+        const meetingListContainer = document.getElementById('meeting-list-container');
+        const upcomingMeetingCard = document.getElementById('upcoming-meeting-card');
+        const allMeetings = [];
+        const projectStartDate = new Date('2025-10-01T14:00:00'); // Wednesday 2 PM
+
+        function generateCalendarLink(title, goal, date) {
+            const startTime = date;
+            const endTime = new Date(startTime.getTime() + 60 * 60 * 1000); // Add 1 hour
+
+            const toISOStringWithoutDashes = (d) => {
+                return d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            };
+
+            const formattedStartTime = toISOStringWithoutDashes(startTime);
+            const formattedEndTime = toISOStringWithoutDashes(endTime);
+
+            const eventTitle = encodeURIComponent(`Project Meeting: ${title}`);
+            const eventDetails = encodeURIComponent(`Weekly sync for the Smart Home IoT project.\n\nThis week's focus:\n- ${goal}`);
+            const eventDates = `${formattedStartTime}/${formattedEndTime}`;
+
+            return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${eventDates}&details=${eventDetails}&location=Google+Meet`;
+        }
+        
+        milestones.forEach((milestone) => {
+            const meetingDate = new Date(projectStartDate);
+            meetingDate.setDate(projectStartDate.getDate() + ((milestone.week - 1) * 7));
+            allMeetings.push({
+                week: milestone.week,
+                title: milestone.meetingTitle,
+                desc: milestone.meetingDesc,
+                goal: milestone.goal,
+                date: meetingDate,
+                link: generateCalendarLink(milestone.meetingTitle, milestone.goal, meetingDate)
+            });
+        });
+
+        const now = new Date();
+        const upcomingMeeting = allMeetings.find(m => m.date > now);
+
+        if (upcomingMeeting) {
+            upcomingMeetingCard.innerHTML = `
+                <p class="text-2xl font-bold text-sky-300">${upcomingMeeting.title}</p>
+                <p class="text-lg text-gray-300 mb-4">${upcomingMeeting.date.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'short' })} @ ${upcomingMeeting.date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}</p>
+                <p class="text-gray-400 text-sm mb-6">${upcomingMeeting.desc}</p>
+                <a href="${upcomingMeeting.link}" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 px-4 rounded-lg mt-6 transition-colors">
+                    Add to Calendar
+                </a>
+            `;
+        } else {
+            upcomingMeetingCard.innerHTML = `<p class="text-lg text-gray-300">All project meetings have concluded.</p>`;
+        }
+        
+        allMeetings.forEach((meeting) => {
+            const isPast = meeting.date < now;
+            const item = document.createElement('div');
+            item.className = 'timeline-item futuristic-card p-5 rounded-xl';
+            item.innerHTML = `
+                <div class="${isPast ? 'text-gray-500 line-through' : ''}">
+                    <h4 class="font-bold text-lg ${isPast ? '' : 'text-white'}">Week ${meeting.week}: ${meeting.title}</h4>
+                    <p class="text-sm ${isPast ? 'text-gray-600' : 'text-gray-400'}">${meeting.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                    <p class="text-sm mt-2 ${isPast ? 'text-gray-600' : 'text-gray-400'}">${meeting.desc}</p>
+                </div>
+            `;
+            meetingListContainer.appendChild(item);
+        });
+
+        const meetingObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('#meeting-list-container .timeline-item').forEach(item => {
+            meetingObserver.observe(item);
+        });
+
+
+        // --- Active Nav Link on Scroll & Overview Animation ---
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const dataflowAnimation = document.getElementById('dataflow-animation');
+        const path1 = document.getElementById('path1');
+        const path2 = document.getElementById('path2');
+        const packet1 = document.getElementById('packet1').children[0];
+        const packet2 = document.getElementById('packet2').children[0];
+
+        const animationObserver = new IntersectionObserver((entries) => {
+             entries.forEach(entry => {
+                 if (entry.target.id === 'overview' && entry.isIntersecting) {
+                    path1.classList.add('animate');
+                    path2.classList.add('animate');
+                    setTimeout(() => {
+                        document.getElementById('packet1').style.opacity = 1;
+                        document.getElementById('packet2').style.opacity = 1;
+                        packet1.beginElement();
+                        packet2.beginElement();
+                    }, 500);
+                 }
+             });
+        }, { threshold: 0.6 });
+        
+        if(dataflowAnimation) {
+             animationObserver.observe(document.getElementById('overview'));
+        }
+
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-40% 0px -60% 0px' });
+
+        sections.forEach(section => {
+            navObserver.observe(section);
+        });
+    });
+    </script>
+</body>
+</html>
+
