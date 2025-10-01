@@ -170,8 +170,8 @@
                     </g>
 
                     <!-- Data Packets -->
-                    <circle id="packet1" r="6" fill="#0ea5e9" class="opacity-0"><animateMotion dur="2s" begin="indefinite" repeatCount="1" fill="freeze"><mpath xlink:href="#path1"/></animateMotion></circle>
-                    <circle id="packet2" r="6" fill="#0ea5e9" class="opacity-0"><animateMotion dur="2s" begin="indefinite" repeatCount="1" fill="freeze"><mpath xlink:href="#path2"/></animateMotion></circle>
+                    <circle id="packet1" r="6" fill="#0ea5e9" class="opacity-0"><animateMotion dur="2s" begin="indefinite" repeatCount="1"><mpath xlink:href="#path1"/></animateMotion></circle>
+                    <circle id="packet2" r="6" fill="#0ea5e9" class="opacity-0"><animateMotion dur="2s" begin="indefinite" repeatCount="1"><mpath xlink:href="#path2"/></animateMotion></circle>
                 </svg>
             </div>
         </section>
@@ -516,17 +516,46 @@
         const packet1 = document.getElementById('packet1').children[0];
         const packet2 = document.getElementById('packet2').children[0];
 
+        let dataflowInterval = null;
+
+        function runDataflowAnimation() {
+            // Reset path animations by removing and re-adding the class
+            path1.classList.remove('animate');
+            path2.classList.remove('animate');
+            void path1.offsetWidth; // Trigger a reflow to restart the CSS animation
+            path1.classList.add('animate');
+            path2.classList.add('animate');
+
+            // Make packets invisible before restarting
+            document.getElementById('packet1').style.opacity = 0;
+            document.getElementById('packet2').style.opacity = 0;
+            
+            setTimeout(() => {
+                document.getElementById('packet1').style.opacity = 1;
+                document.getElementById('packet2').style.opacity = 1;
+                packet1.beginElement();
+                packet2.beginElement();
+            }, 500);
+        }
+
+        function startDataflowLoop() {
+            if (!dataflowInterval) {
+                runDataflowAnimation(); // Run immediately the first time
+                dataflowInterval = setInterval(runDataflowAnimation, 4000); // Loop every 4 seconds
+            }
+        }
+
+        function stopDataflowLoop() {
+            clearInterval(dataflowInterval);
+            dataflowInterval = null;
+        }
+
         const animationObserver = new IntersectionObserver((entries) => {
              entries.forEach(entry => {
                  if (entry.target.id === 'overview' && entry.isIntersecting) {
-                    path1.classList.add('animate');
-                    path2.classList.add('animate');
-                    setTimeout(() => {
-                        document.getElementById('packet1').style.opacity = 1;
-                        document.getElementById('packet2').style.opacity = 1;
-                        packet1.beginElement();
-                        packet2.beginElement();
-                    }, 500);
+                    startDataflowLoop();
+                 } else {
+                    stopDataflowLoop();
                  }
              });
         }, { threshold: 0.6 });
@@ -555,4 +584,6 @@
     </script>
 </body>
 </html>
+
+
 
