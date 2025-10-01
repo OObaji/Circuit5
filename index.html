@@ -103,6 +103,13 @@
             animation: fadeInSlideUp 0.5s ease-out forwards;
         }
 
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        summary {
+            list-style: none;
+        }
+
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -138,6 +145,7 @@
             <li><a href="#deadlines" class="nav-link flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Deadlines</a></li>
             <li><a href="#meetings" class="nav-link flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Meetings</a></li>
             <li><a href="#tools" class="nav-link flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Tools & Resources</a></li>
+            <li><a href="#logs" class="nav-link flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Meeting Logs</a></li>
         </ul>
     </nav>
 
@@ -183,22 +191,22 @@
                 <div class="futuristic-card p-6 rounded-2xl text-center">
                     <h3 class="font-bold text-lg text-white">Sensor & Data Lead</h3>
                     <p class="text-sky-300 mt-1">Ali</p>
-                    <p class="text-gray-400 text-sm mt-3">Writes the Python script to generate and publish sensor data.</p>
+                    <p class="text-gray-400 text-sm mt-3">Experienced with Python, will define data structures and assist with software logic.</p>
                 </div>
                 <div class="futuristic-card p-6 rounded-2xl text-center">
                     <h3 class="font-bold text-lg text-white">Backend & Comms Lead</h3>
                     <p class="text-sky-300 mt-1">Favour</p>
-                    <p class="text-gray-400 text-sm mt-3">Manages the MQTT broker and ensures reliable data communication.</p>
+                    <p class="text-gray-400 text-sm mt-3">Experienced with Arduino, will handle microcontroller programming and hardware.</p>
                 </div>
                 <div class="futuristic-card p-6 rounded-2xl text-center">
                     <h3 class="font-bold text-lg text-white">Dashboard & Viz Lead</h3>
                     <p class="text-sky-300 mt-1">Bless</p>
-                    <p class="text-gray-400 text-sm mt-3">Designs and builds the Node-RED dashboard for data visualization.</p>
+                    <p class="text-gray-400 text-sm mt-3">Eager to master Node-RED and create a stunning and functional dashboard.</p>
                 </div>
                 <div class="futuristic-card p-6 rounded-2xl text-center">
                     <h3 class="font-bold text-lg text-white">Project Manager & Docs</h3>
                     <p class="text-sky-300 mt-1">Ololade</p>
-                    <p class="text-gray-400 text-sm mt-3">Oversees the timeline, organizes meetings, and leads documentation.</p>
+                    <p class="text-gray-400 text-sm mt-3">Skilled in organization and will keep the team aligned and on schedule.</p>
                 </div>
             </div>
         </section>
@@ -262,20 +270,40 @@
         <section id="tools" class="section">
              <h2 class="text-3xl font-bold mb-8">Tools & Resources</h2>
              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                 <a href="https://docs.python.org/3/tutorial/" target="_blank" rel="noopener noreferrer" class="futuristic-card p-6 rounded-2xl flex items-center gap-4">
-                    <img src="https://www.python.org/static/favicon.ico" class="w-10 h-10"/>
+                 <a href="https://www.arduino.cc/en/software" target="_blank" rel="noopener noreferrer" class="futuristic-card p-6 rounded-2xl flex items-center gap-4">
+                    <div class="w-10 h-10 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M12 22c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/><path d="M12 4v.01"/><path d="M20 12h.01"/><path d="M4 12h.01"/><path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"/></svg>
+                    </div>
                     <div>
-                        <h3 class="font-bold text-lg text-white">Python</h3>
-                        <p class="text-gray-400 text-sm">For simulating sensor data. Click to view docs.</p>
+                        <h3 class="font-bold text-lg text-white">Arduino IDE (C++)</h3>
+                        <p class="text-gray-400 text-sm">For programming the microcontroller.</p>
                     </div>
                  </a>
-                 <a href="https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php" target="_blank" rel="noopener noreferrer" class="futuristic-card p-6 rounded-2xl flex items-center gap-4">
+                <a href="https://www.arduino.cc/en/guides/esp32" target="_blank" rel="noopener noreferrer" class="futuristic-card p-6 rounded-2xl flex items-center gap-4">
                     <div class="w-10 h-10 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><path d="M10.6 13.4c-.9-.9-.9-2.3 0-3.1"/><path d="M13.4 10.6c.9.9.9 2.3 0 3.1"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1"/><circle cx="12" cy="12" r="1"/></svg>
+                       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v2"/><path d="M15 1v2"/><path d="M9 21v2"/><path d="M15 21v2"/><path d="M1 9h2"/><path d="M1 15h2"/><path d="M21 9h2"/><path d="M21 15h2"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-white">ESP32/Arduino</h3>
+                        <p class="text-gray-400 text-sm">Microcontroller to read sensors and publish data.</p>
+                    </div>
+                </a>
+                <a href="https://components101.com/dht22-temperature-and-humidity-sensor" target="_blank" rel="noopener noreferrer" class="futuristic-card p-6 rounded-2xl flex items-center gap-4">
+                     <div class="w-10 h-10 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>
+                     </div>
+                     <div>
+                        <h3 class="font-bold text-lg text-white">DHT22 Sensor</h3>
+                        <p class="text-gray-400 text-sm">For capturing temperature and humidity data.</p>
+                    </div>
+                 </a>
+                <a href="https://www.adafruit.com/product/772" target="_blank" rel="noopener noreferrer" class="futuristic-card p-6 rounded-2xl flex items-center gap-4">
+                    <div class="w-10 h-10 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 7h6"/><path d="M9 12h6"/><path d="M9 17h3"/></svg>
                     </div>
                      <div>
-                        <h3 class="font-bold text-lg text-white">Paho-MQTT</h3>
-                        <p class="text-gray-400 text-sm">Python client for MQTT communication.</p>
+                        <h3 class="font-bold text-lg text-white">I2C LCD Display</h3>
+                        <p class="text-gray-400 text-sm">For local real-time data display.</p>
                     </div>
                  </a>
                  <a href="https://mosquitto.org/documentation/" target="_blank" rel="noopener noreferrer" class="futuristic-card p-6 rounded-2xl flex items-center gap-4">
@@ -310,6 +338,60 @@
                     </div>
                  </a>
              </div>
+        </section>
+
+        <!-- Section 7: Meeting Logs -->
+        <section id="logs" class="section">
+            <h2 class="text-3xl font-bold mb-8">Meeting Logs</h2>
+            <div class="space-y-4">
+                <!-- Log 1 -->
+                <div class="timeline-item futuristic-card rounded-2xl overflow-hidden">
+                    <details class="group" open>
+                        <summary class="flex items-center justify-between p-6 cursor-pointer">
+                            <div>
+                                <h3 class="text-xl font-bold text-sky-300">Meeting 1: Project Kickoff & Planning</h3>
+                                <time class="text-sm text-gray-400">October 1, 2025</time>
+                            </div>
+                            <div class="transform transition-transform duration-300 group-open:rotate-90">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </div>
+                        </summary>
+                        <div class="bg-gray-900/50 p-6 border-t border-gray-700">
+                            <p class="text-gray-300 mb-6"><strong>Attendees:</strong> Ali, Favour, Bless, Ololade</p>
+                            
+                            <h4 class="font-semibold text-lg mb-4">Agenda & Discussion Points:</h4>
+                            <ul class="space-y-3 list-disc list-inside text-gray-300 mb-6">
+                                <li><strong>Project Brief Deep Dive:</strong> Confirmed understanding of all deliverables and the grading criteria.</li>
+                                <li><strong>Team Strengths & Roles:</strong>
+                                    <ul class="list-['-_'] list-inside ml-4 mt-2 space-y-1">
+                                        <li>Ali: Python experience.</li>
+                                        <li>Favour: Arduino/hardware experience.</li>
+                                        <li>Bless: Eager to learn Node-RED for the dashboard.</li>
+                                        <li>Ololade: Strong organizational skills.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Tech Stack Decision:</strong> Decided to pivot from a software simulation to a **hardware-based project** to create a more robust system.</li>
+                                 <li><strong>Hardware Suggestion:</strong> Favour suggested adding a small I2C LCD display for local data readouts, which the team agreed would be a great, low-cost addition.</li>
+                            </ul>
+
+                            <h4 class="font-semibold text-lg mt-6 mb-4">Key Decisions:</h4>
+                            <ul class="space-y-3 list-disc list-inside text-gray-300 mb-6">
+                                <li><strong>Roles Confirmed:</strong> Roles were confirmed, leveraging Favour's Arduino skills for hardware and Ali's Python skills for data structure and testing.</li>
+                                <li><strong>Technology Confirmed:</strong> Arduino/ESP32, DHT22 Sensor, I2C LCD Display, Mosquitto, Node-RED.</li>
+                                 <li><strong>Weekly Meeting:</strong> Set for Wednesdays, 2:00 PM.</li>
+                            </ul>
+
+                            <h4 class="font-semibold text-lg mt-6 mb-4">Action Items for Next Meeting (Oct 8):</h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Favour:</span> Research and price out the hardware components (ESP32, DHT22, LCD). Begin setting up the Arduino IDE and necessary libraries.</div></li>
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Ali:</span> Design the JSON data structure for the sensor readings (e.g., `{"temp": 21.5, "hum": 45.2}`). Define the MQTT topic hierarchy (e.g., `circuit4/room1/data`).</div></li>
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Bless:</span> Install Node.js and Node-RED. Start a tutorial on creating a basic dashboard with a gauge and a chart.</div></li>
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Ololade:</span> Update this Project Hub with the new decisions and action items. Ensure the Google Drive is accessible to everyone.</div></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </div>
         </section>
 
     </main>
@@ -506,6 +588,21 @@
             meetingObserver.observe(item);
         });
 
+        // Animate Meeting Logs
+        const logObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 150);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('#logs .timeline-item').forEach(item => {
+            logObserver.observe(item);
+        });
+
 
         // --- Active Nav Link on Scroll & Overview Animation ---
         const sections = document.querySelectorAll('section');
@@ -584,6 +681,4 @@
     </script>
 </body>
 </html>
-
-
 
