@@ -17,7 +17,7 @@
         @keyframes subtle-float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
-        }
+            }
 
         @keyframes data-flow {
             from {
@@ -154,7 +154,6 @@
             <li><a href="#team" class="nav-link flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Team</a></li>
             <li><a href="#milestones" class="nav-link flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Milestones</a></li>
             <li><a href="#deadlines" class="nav-link flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Deadlines</a></li>
-            <li><a href="#meetings" class="nav-link flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Meetings</a></li>
             <li><a href="#tools" class="nav-link flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Tools & Resources</a></li>
             <li><a href="#logs" class="nav-link flex items-center gap-3 py-2 px-3 rounded-lg font-semibold">Meeting Logs</a></li>
         </ul>
@@ -181,7 +180,6 @@
             <li><a href="#team" class="nav-link text-xl p-3 block rounded-lg">Team</a></li>
             <li><a href="#milestones" class="nav-link text-xl p-3 block rounded-lg">Milestones</a></li>
             <li><a href="#deadlines" class="nav-link text-xl p-3 block rounded-lg">Deadlines</a></li>
-            <li><a href="#meetings" class="nav-link text-xl p-3 block rounded-lg">Meetings</a></li>
             <li><a href="#tools" class="nav-link text-xl p-3 block rounded-lg">Tools & Resources</a></li>
             <li><a href="#logs" class="nav-link text-xl p-3 block rounded-lg">Meeting Logs</a></li>
         </ul>
@@ -230,27 +228,27 @@
                 <div class="futuristic-card p-6 rounded-2xl text-center">
                     <h3 class="font-bold text-lg text-white">Project Manager & Team Lead</h3>
                     <p class="text-sky-300 mt-1">Ololade</p>
-                    <p class="text-gray-400 text-sm mt-3">Coordinates the team, tracks progress, and ensures on-time delivery of all project deliverables (demo, poster, reflections).</p>
+                    <p class="text-gray-400 text-sm mt-3">Coordinates the entire project lifecycle, focusing on final written deliverables (Technical Poster, Presentation Slides, Individual Reflection tracking), and overall time management.</p>
                 </div>
                 <div class="futuristic-card p-6 rounded-2xl text-center">
                     <h3 class="font-bold text-lg text-white">Lead Device Programmer (C++)</h3>
                     <p class="text-sky-300 mt-1">Ali</p>
-                    <p class="text-gray-400 text-sm mt-3">Writes the C++ code for the ESP32: reads sensors, handles alert logic (LEDs/buzzer), and publishes JSON data to MQTT.</p>
+                    <p class="text-gray-400 text-sm mt-3">Writes the C++ code for the ESP32: handles sensor reading, implements alert logic (LEDs/buzzer code update), manages the I2C LCD display, and is responsible for the Final Code Submission.</p>
                 </div>
                 <div class="futuristic-card p-6 rounded-2xl text-center">
                     <h3 class="font-bold text-lg text-white">Hardware & Wiring Specialist</h3>
                     <p class="text-sky-300 mt-1">Favour</p>
-                    <p class="text-gray-400 text-sm mt-3">Builds the physical hardware, replicating Wokwi diagrams on the breadboard and ensuring all components are functional.</p>
+                    <p class="text-gray-400 text-sm mt-3">Leads the physical Arduino Hardware Set Up. Builds and wires the ESP32, DHT22 sensor, and alert components (LED & Buzzer hardware setup) on the breadboard.</p>
                 </div>
                 <div class="futuristic-card p-6 rounded-2xl text-center">
                     <h3 class="font-bold text-lg text-white">Dashboard & Viz Specialist</h3>
                     <p class="text-sky-300 mt-1">Bless</p>
-                    <p class="text-gray-400 text-sm mt-3">Builds the Node-RED dashboard. Subscribes to MQTT, parses JSON data, and visualizes it with real-time gauges and charts.</p>
+                    <p class="text-gray-400 text-sm mt-3">Specializes in Dashboard Design & Development. Builds the Node-RED interface, subscribing to MQTT data to create visual components like gauges and real-time charts.</p>
                 </div>
                 <div class="futuristic-card p-6 rounded-2xl text-center">
-                    <h3 class="font-bold text-lg text-white">Cloud & Scalability Engineer</h3>
+                    <h3 class="font-bold text-lg text-white">Cloud & Media Engineer</h3>
                     <p class="text-sky-300 mt-1">Alex</p>
-                    <p class="text-gray-400 text-sm mt-3">Works on cloud add-on features, making the dashboard globally accessible (e.g., cloud-hosted Node-RED) and logging data to a cloud DB.</p>
+                    <p class="text-gray-400 text-sm mt-3">Responsible for MQTT Configuration (including C++ code for data publishing and broker setup) and recording the Video Demonstration (Nov 24th milestone).</p>
                 </div>
             </div>
         </section>
@@ -286,26 +284,6 @@
                         <div><span id="submission-minutes"></span><p class="text-sm font-normal">Mins</p></div>
                         <div><span id="submission-seconds"></span><p class="text-sm font-normal">Secs</p></div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 5: Meetings -->
-        <section id="meetings" class="section">
-            <h2 class="text-3xl font-bold mb-8">Weekly Sync Meetings</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <!-- Upcoming Meeting Card (Sticky on desktop) -->
-                <div class="lg:col-span-1">
-                    <div class="lg:sticky top-24">
-                         <h3 class="text-xl font-bold mb-4 text-gray-300">Next Meeting</h3>
-                         <div id="upcoming-meeting-card" class="futuristic-card p-6 rounded-2xl">
-                            <!-- Upcoming meeting details will be injected by JS -->
-                         </div>
-                    </div>
-                </div>
-                <!-- Meeting List -->
-                <div id="meeting-list-container" class="lg:col-span-2 space-y-6">
-                    <!-- Meeting items will be injected by JS -->
                 </div>
             </div>
         </section>
@@ -397,9 +375,122 @@
         <section id="logs" class="section">
             <h2 class="text-3xl font-bold mb-8">Meeting Logs</h2>
             <div class="space-y-4">
-                <!-- Log 1 -->
+                <!-- Log 4 (Newest) -->
                 <div class="timeline-item futuristic-card rounded-2xl overflow-hidden">
                     <details class="group" open>
+                        <summary class="flex items-center justify-between p-6 cursor-pointer">
+                            <div>
+                                <h3 class="text-xl font-bold text-sky-300">Meeting 4: Dashboard & Cloud Integration Review</h3>
+                                <time class="text-sm text-gray-400">November 12, 2025</time>
+                            </div>
+                            <div class="transform transition-transform duration-300 group-open:rotate-90">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </div>
+                        </summary>
+                        <div class="bg-gray-900/50 p-6 border-t border-gray-700">
+                            <p class="text-gray-300 mb-6">Attendees: Ali, Favour, Bless, Alex, Ololade</p>
+                            
+                            <h4 class="font-semibold text-lg mb-4">Agenda & Discussion Points:</h4>
+                            <ul class="space-y-3 list-disc list-inside text-gray-300 mb-6">
+                                <li>Dashboard UI Complete (Bless): Bless demonstrated the finished Node-RED dashboard design, including live gauges and charts for temperature and humidity, ready to receive actual data.</li>
+                                <li>MQTT Publishing Integration (Alex): Alex confirmed the C++ code for MQTT data publishing is successfully integrated and tested locally using a mock broker. The data structure is clean and reliable (JSON payload).</li>
+                                <li>End-to-End Test Status: A preliminary test confirmed data successfully flowed from the ESP32 (running MQTT publish code) through the Mosquitto broker to the Node-RED environment.</li>
+                                <li>Next Focus: Transitioning fully into system validation and final deliverables (poster, presentation).</li>
+                            </ul>
+
+                            <h4 class="font-semibold text-lg mt-6 mb-4">Key Decisions:</h4>
+                            <ul class="space-y-3 list-disc list-inside text-gray-300 mb-6">
+                                <li>System Validation: The entire team will focus on the System Testing milestone during the seminar next Monday (Nov 17).</li>
+                                <li>Media Focus: Alex will finalize the storyboard for the Video Demonstration.</li>
+                            </ul>
+
+                            <h4 class="font-semibold text-lg mt-6 mb-4">Action Items for Next Week (Nov 17):</h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">All Team Members:</span> Participate in the System Testing milestone on Monday. Run the system for a full seminar duration to validate stability.</div></li>
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Ololade:</span> Complete the initial draft of the Technical Poster.</div></li>
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Alex:</span> Prepare and organize the script and equipment for the Video Demonstration recording (due Nov 24).</div></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+                <!-- Log 3 -->
+                <div class="timeline-item futuristic-card rounded-2xl overflow-hidden">
+                    <details class="group">
+                        <summary class="flex items-center justify-between p-6 cursor-pointer">
+                            <div>
+                                <h3 class="text-xl font-bold text-sky-300">Meeting 3: Alarm Integration & MQTT Handover</h3>
+                                <time class="text-sm text-gray-400">November 5, 2025</time>
+                            </div>
+                            <div class="transform transition-transform duration-300 group-open:rotate-90">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </div>
+                        </summary>
+                        <div class="bg-gray-900/50 p-6 border-t border-gray-700">
+                            <p class="text-gray-300 mb-6">Attendees: Ali, Favour, Bless, Alex, Ololade</p>
+                            
+                            <h4 class="font-semibold text-lg mb-4">Agenda & Discussion Points:</h4>
+                            <ul class="space-y-3 list-disc list-inside text-gray-300 mb-6">
+                                <li>Alarm Integration Complete (Ali/Favour): Favour successfully wired the LED and Buzzer, and Ali integrated the C++ alert logic (turning them on if temperature exceeds 28°C). The local device is now fully functional.</li>
+                                <li>Dashboard Progress (Bless): Bless demonstrated the Node-RED environment setup, including the layout and placement of the required gauges and charts, awaiting live data.</li>
+                                <li>MQTT Initial Setup (Alex): Alex confirmed the Mosquitto broker is running and accessible on the local network, and successfully subscribed Node-RED to a test topic.</li>
+                                <li>Next Step: Integration of MQTT client into the C++ application (Alex's next focus).</li>
+                            </ul>
+
+                            <h4 class="font-semibold text-lg mt-6 mb-4">Key Decisions:</h4>
+                            <ul class="space-y-3 list-disc list-inside text-gray-300 mb-6">
+                                <li>Full Cloud Focus: The project now shifts entirely to Alex and Bless to achieve end-to-end cloud connectivity and visualization, as the device is complete.</li>
+                            </ul>
+
+                            <h4 class="font-semibold text-lg mt-6 mb-4">Action Items for Next Meeting (Nov 12):</h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Alex:</span> Implement the MQTT Publishing C++ code on the ESP32 to send sensor data to the broker. Perform initial tests.</div></li>
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Bless:</span> Finalize the Node-RED dashboard design and configure the MQTT input node to parse and display Alex’s live data.</div></li>
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Ololade:</span> Begin outlining the structure for the Technical Poster and Presentation Slides.</div></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+                <!-- Log 2 -->
+                <div class="timeline-item futuristic-card rounded-2xl overflow-hidden">
+                    <details class="group">
+                        <summary class="flex items-center justify-between p-6 cursor-pointer">
+                            <div>
+                                <h3 class="text-xl font-bold text-sky-300">Meeting 2: Hardware Verification & Code Foundation</h3>
+                                <time class="text-sm text-gray-400">October 28, 2025</time>
+                            </div>
+                            <div class="transform transition-transform duration-300 group-open:rotate-90">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </div>
+                        </summary>
+                        <div class="bg-gray-900/50 p-6 border-t border-gray-700">
+                            <p class="text-gray-300 mb-6">Attendees: Ali, Favour, Bless, Ololade</p>
+                            
+                            <h4 class="font-semibold text-lg mb-4">Agenda & Discussion Points:</h4>
+                            <ul class="space-y-3 list-disc list-inside text-gray-300 mb-6">
+                                <li>Code Set Up Complete (Ali): Ali successfully completed the foundational Arduino C++ code to read data from the DHT22 sensor and display it correctly on the I2C LCD screen. This confirms the primary component integration.</li>
+                                <li>Hardware Set Up Ongoing (Favour): Favour confirmed all physical wiring for the sensor and display is stable. Focus now shifts to adding the LED and Buzzer for the next milestone.</li>
+                                <li>Interface Preparation (Bless): Bless showed a prototype of the Node-RED dashboard environment and is ready to receive test data.</li>
+                                <li>Project Status: Project is on track, having completed the core C++ development and hardware wiring for data acquisition.</li>
+                            </ul>
+
+                            <h4 class="font-semibold text-lg mt-6 mb-4">Key Decisions:</h4>
+                            <ul class="space-y-3 list-disc list-inside text-gray-300 mb-6">
+                                <li>Immediate Focus: The next priority is integrating the alarm components (LED/Buzzer) and then configuring the MQTT link for end-to-end communication.</li>
+                            </ul>
+
+                            <h4 class="font-semibold text-lg mt-6 mb-4">Action Items for Next Meeting (Nov 3):</h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Favour:</span> Complete the hardware wiring for the LED and Buzzer integration (Week 6 milestone, hardware side).</div></li>
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Ali:</span> Develop the C++ code for alert logic (turning the LED/Buzzer on/off based on thresholds).</div></li>
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Alex:</span> Prepare the Mosquitto broker environment and start investigating the required C++ libraries for MQTT publishing on the ESP32.</div></li>
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Bless:</span> Prepare the Node-RED flow to include an MQTT input node and a debug node to verify data reception.</div></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+                <!-- Log 1 -->
+                <div class="timeline-item futuristic-card rounded-2xl overflow-hidden">
+                    <details class="group">
                         <summary class="flex items-center justify-between p-6 cursor-pointer">
                             <div>
                                 <h3 class="text-xl font-bold text-sky-300">Meeting 1: Project Kickoff & Planning</h3>
@@ -410,34 +501,34 @@
                             </div>
                         </summary>
                         <div class="bg-gray-900/50 p-6 border-t border-gray-700">
-                            <p class="text-gray-300 mb-6"><strong>Attendees:</strong> Ali, Favour, Bless, Ololade</p>
+                            <p class="text-gray-300 mb-6">Attendees: Ali, Favour, Bless, Ololade</p>
                             
                             <h4 class="font-semibold text-lg mb-4">Agenda & Discussion Points:</h4>
                             <ul class="space-y-3 list-disc list-inside text-gray-300 mb-6">
-                                <li><strong>Project Brief Deep Dive:</strong> Confirmed understanding of all deliverables and the grading criteria.</li>
-                                <li><strong>Team Strengths & Roles:</strong>
+                                <li>Project Brief Deep Dive: Confirmed understanding of all deliverables and the grading criteria.</li>
+                                <li>Team Strengths & Roles:
                                     <ul class="list-['-_'] list-inside ml-4 mt-2 space-y-1">
-                                        <li>Ali: Python experience.</li>
-                                        <li>Favour: Arduino/hardware experience.</li>
+                                        <li>Ali: Python experience, transitioning to C++ lead for device code.</li>
+                                        <li>Favour: Arduino/hardware experience, specializing in physical wiring.</li>
                                         <li>Bless: Eager to learn Node-RED for the dashboard.</li>
-                                        <li>Ololade: Strong organizational skills.</li>
+                                        <li>Ololade: Strong organizational skills, confirmed Project Manager.</li>
                                     </ul>
                                 </li>
-                                <li><strong>Tech Stack Decision:</strong> Decided to pivot from a software simulation to a **hardware-based project** to create a more robust system.</li>
-                                 <li><strong>Hardware Suggestion:</strong> Favour suggested adding a small I2C LCD display for local data readouts, which the team agreed would be a great, low-cost addition.</li>
+                                <li>Tech Stack Decision: Decided to pivot from a software simulation to a hardware-based project to create a more robust system.</li>
+                                 <li>Hardware Suggestion: Favour suggested adding a small I2C LCD display for local data readouts, which the team agreed would be a great, low-cost addition.</li>
                             </ul>
 
                             <h4 class="font-semibold text-lg mt-6 mb-4">Key Decisions:</h4>
                             <ul class="space-y-3 list-disc list-inside text-gray-300 mb-6">
-                                <li><strong>Roles Confirmed:</strong> Roles were confirmed, leveraging Favour's Arduino skills for hardware and Ali's Python skills for data structure and testing.</li>
-                                <li><strong>Technology Confirmed:</strong> Arduino/ESP32, DHT22 Sensor, I2C LCD Display, Mosquitto, Node-RED.</li>
-                                 <li><strong>Weekly Meeting:</strong> Set for Wednesdays, 2:00 PM.</li>
+                                <li>Roles Confirmed: Roles were confirmed as listed above, focusing on specialized tasks.</li>
+                                <li>Technology Confirmed: Arduino/ESP32, DHT22 Sensor, I2C LCD Display, Mosquitto, Node-RED.</li>
+                                 <li>Weekly Meeting: Set for Wednesdays, 2:00 PM.</li>
                             </ul>
 
                             <h4 class="font-semibold text-lg mt-6 mb-4">Action Items for Next Meeting (Oct 8):</h4>
                             <ul class="space-y-3 text-gray-300">
-                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Favour:</span> Research and price out the hardware components (ESP32, DHT22, LCD). Begin setting up the Arduino IDE and necessary libraries.</div></li>
-                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Ali:</span> Design the JSON data structure for the sensor readings (e.g., `{"temp": 21.5, "hum": 45.2}`). Define the MQTT topic hierarchy (e.g., `circuit5/room1/data`).</div></li>
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Favour:</span> Receive and Verify Hardware by the next meeting (Week 2 milestone). Ensure all components (ESP32, DHT22, etc.) were received from the lecturer and are ready for wiring.</div></li>
+                                <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Ali:</span> Prepare C++ Environment and design the JSON data structure for the sensor readings (e.g., {"temp": 21.5, "hum": 45.2}).</div></li>
                                 <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Bless:</span> Install Node.js and Node-RED. Start a tutorial on creating a basic dashboard with a gauge and a chart.</div></li>
                                 <li class="flex items-start"><span class="text-sky-400 mr-3 mt-1">→</span> <div><span class="font-semibold">Ololade:</span> Update this Project Hub with the new decisions and action items. Ensure the Google Drive is accessible to everyone.</div></li>
                             </ul>
@@ -529,31 +620,45 @@
         startCountdown('countdown-viva', '2025-12-15T09:00:00');
         startCountdown('countdown-submission', '2025-12-17T23:59:59');
         
-        // --- Milestones Data ---
+        // --- Milestones Data (UPDATED based on user's new schedule) ---
         const milestones = [
-            { week: 1, dates: 'Oct 1 - Oct 7', title: 'Kickoff & Setup', meetingTitle: 'Project Kickoff & Planning', meetingDesc: 'Assigning roles, confirming our tech stack, and planning initial setup.', goal: 'Finalize roles & tech stack. All team members set up their individual development environments.' },
-            { week: 2, dates: 'Oct 8 - Oct 14', title: 'Hardware & Tool Selection', meetingTitle: 'Hardware & Tools Decision', meetingDesc: 'Deciding on the final hardware equipment and software tools for the project.', goal: 'We decide as a team the hardware equipment and the tools we will be using for the project.' },
-            { week: 3, dates: 'Oct 15 - Oct 21', title: 'Local Sensor Reading', meetingTitle: 'Local Hardware Demo', meetingDesc: 'Favour demonstrates reading sensor data and displaying it on the LCD screen.', goal: 'Successfully read temperature/humidity from the DHT22 and display it locally on the LCD.' },
-            { week: 4, dates: 'Oct 22 - Oct 28', title: 'MQTT Publishing', meetingTitle: 'First Data Transmission', meetingDesc: 'Demonstrating the Arduino publishing sensor data to the Mosquitto MQTT broker.', goal: 'Favour and Ali collaborate to send sensor data from the ESP32 to the broker.' },
-            { week: 5, dates: 'Oct 29 - Nov 4', title: 'Dashboard Connection', meetingTitle: 'Dashboard Data Reception', meetingDesc: 'Bless demonstrates the Node-RED dashboard subscribing to and displaying the live data.', goal: 'Bless connects the dashboard to the MQTT broker and visualizes the incoming data.' },
-            { week: 6, dates: 'Nov 5 - Nov 11', title: 'Full System Integration', meetingTitle: 'End-to-End System Test', meetingDesc: 'Conducting the first full test of the hardware, broker, and dashboard together.', goal: 'Achieve a stable, end-to-end data flow from the physical sensor to the web dashboard.' },
-            { week: 7, dates: 'Nov 12 - Nov 18', title: 'System Refinement', meetingTitle: 'Bug Bash & UI Polish', meetingDesc: 'Identifying and fixing bugs. Bless refines the dashboard UI based on team feedback.', goal: 'Improve system stability and the aesthetic of the Node-RED dashboard.' },
-            { week: 8, dates: 'Nov 19 - Nov 25', title: 'Poster & Documentation', meetingTitle: 'Poster Content Review', meetingDesc: 'Finalizing the system architecture diagram and gathering all content for the technical poster.', goal: 'Complete the first draft of the technical poster. All team members contribute content.' },
-            { week: 9, dates: 'Nov 26 - Dec 2', title: 'Demo Recording', meetingTitle: 'Demo Video Planning', meetingDesc: 'Storyboarding and recording the 10-minute project demonstration video.', goal: 'Record and edit a clear and comprehensive video demonstration of the working system.' },
-            { week: 10, dates: 'Dec 3 - Dec 9', title: 'Presentation & Reflection', meetingTitle: 'Presentation Rehearsal', meetingDesc: 'First full run-through of the final presentation. Finalizing individual reflection logs.', goal: 'Complete presentation slides. All members finish their individual reflective logs.' },
-            { week: 11, dates: 'Dec 10 - Dec 14', title: 'Final Practice', meetingTitle: 'Final Viva Prep', meetingDesc: 'Final rehearsals of the presentation, focusing on timing and anticipating viva questions.', goal: 'Team is confident and prepared for the presentation and viva. All deliverables are finalized.' }
+            { week: 1, dates: 'Oct 1 - Oct 7', title: 'Group Formation & Assignment', goal: 'Finalize group formation and confirm roles for all team members.', team: 'All Team Members' },
+            { week: 2, dates: 'Oct 8 - Oct 14', title: 'Hardware Received & Verified', goal: 'Receive all necessary electronic components from the lecturer, verify the inventory, and organize them for the physical build.', team: 'Team Lead & Hardware Specialist' },
+            { week: 3, dates: 'Oct 15 - Oct 21', title: 'Arduino Hardware Set Up', goal: 'Physical wiring of the ESP32, DHT22 sensor, and other components on the breadboard.', team: 'Favour' },
+            { week: 4, dates: 'Oct 22 - Oct 28', title: 'Arduino Code Set Up', goal: 'Initial development of C++ code for reading sensor data and displaying it locally.', team: 'Ali' },
+            { week: 5, dates: 'Oct 29 - Nov 2', title: 'Buffer Week / Code Refinement', goal: 'Time used for documentation, catching up, or initial code/wiring refinement before alert integration.', team: 'N/A' },
+            { week: 6, dates: 'Nov 3 - Nov 7', title: 'LED & Buzzer Integration', goal: 'Integrate the LED & Buzzer hardware and update the C++ code to implement alert logic.', team: 'Ali & Favour' },
+            { week: 7, dates: 'Nov 10 - Nov 14', title: 'Dashboard Design & Development', goal: 'Bless completes the Node-RED dashboard UI, gauges, and real-time visualization.', team: 'Bless' },
+            { week: 7, dates: 'Nov 16 - Nov 17', title: 'MQTT Configuration', goal: 'Alex configures the MQTT connection and ensures end-to-end data flow from device to dashboard.', team: 'Alex' },
+            { week: 7, dates: 'Nov 17 (Seminar)', title: 'System Testing', goal: 'Full system test and validation during the scheduled seminar time.', team: 'All Team Members' },
+            { week: 8, dates: 'Nov 17 - Nov 19', title: 'Technical Poster', goal: 'Ololade finalizes the technical poster content, design, and architecture diagrams.', team: 'Ololade' },
+            { week: 8, dates: 'Nov 19 - Nov 21', title: 'Presentation Slides', goal: 'Ololade develops the full slide deck for the final presentation and viva prep.', team: 'Ololade' },
+            { week: 9, dates: 'Nov 24', title: 'Video Demonstration', goal: 'Final recording and editing of the 10-minute project demonstration video.', team: 'Alex' },
+            { week: 9, dates: 'Nov 26', title: 'Final Code Submission', goal: 'Ali bundles the final C++ code, Node-RED flows, and documentation for submission.', team: 'Ali' },
+            { week: 10, dates: 'Dec 1 - Dec 7', title: 'Individual Reflection Logs', goal: 'All team members complete and submit their individual reflective logs.', team: 'All members' },
+            { week: 11, dates: 'Dec 15', title: 'Group Presentation & Viva', goal: 'Deliver the final project presentation and attend the Q&A viva session.', team: 'All Team Members' }
         ];
 
         // --- Animated Milestones ---
         const timelineContainer = document.getElementById('timeline-container');
         const today = new Date();
-        const startDate = new Date('2025-10-01');
-        const weekNumber = Math.floor((today - startDate) / (1000 * 60 * 60 * 24 * 7)) + 1;
+        const projectStartDate = new Date('2025-10-01'); // Start date for week calculations
+        const weekNumber = Math.floor((today - projectStartDate) / (1000 * 60 * 60 * 24 * 7)) + 1;
 
         milestones.forEach(milestone => {
-            const isCurrent = milestone.week === weekNumber;
-            const endDateStr = milestone.dates.split(' - ')[1];
-            const milestoneEndDate = new Date(`${endDateStr}, 2025 23:59:59`);
+            // Determine the week number based on the start date of Oct 1st
+            const milestoneStartDate = new Date(milestone.dates.split(' - ')[0] || milestone.dates);
+            const msWeekNumber = Math.floor((milestoneStartDate - projectStartDate) / (1000 * 60 * 60 * 24 * 7)) + 1;
+            
+            const endDateStr = milestone.dates.split(' - ')[1] || milestone.dates.split(' (')[0];
+            let milestoneEndDate;
+            if (endDateStr.includes('Seminar') || endDateStr.includes('Submission')) {
+                 milestoneEndDate = new Date(milestone.dates.split(' (')[0].trim()); // Use the explicit date if provided
+            } else {
+                 milestoneEndDate = new Date(`${endDateStr}, 2025 23:59:59`);
+            }
+            
+            const isCurrent = (milestoneStartDate <= today && milestoneEndDate >= today) || (msWeekNumber === weekNumber && !milestone.dates.includes('Dec 15'));
             const isPast = milestoneEndDate < today && !isCurrent;
 
             let iconSvg;
@@ -565,7 +670,7 @@
                 bgColorClass = 'bg-green-900';
                 ringColorClass = 'ring-green-900/50';
             } else if (isCurrent) {
-                iconSvg = `<svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>`;
+                iconSvg = `<svg class="w-4 h-4 text-white animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>`;
                 bgColorClass = 'bg-sky-500';
                 ringColorClass = 'ring-sky-400';
             } else {
@@ -579,8 +684,8 @@
                     ${iconSvg}
                 </span>
                 <div class="futuristic-card p-6 rounded-xl ${isCurrent ? 'border-sky-500' : ''}">
-                    <h3 class="text-lg font-semibold ${isPast ? 'text-gray-400' : 'text-white'}">Week ${milestone.week}: ${milestone.title}</h3>
-                    <time class="block mb-2 text-sm font-normal leading-none text-gray-400">${milestone.dates}</time>
+                    <h3 class="text-lg font-semibold ${isPast ? 'text-gray-400' : 'text-white'}">${milestone.title}</h3>
+                    <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Week ${milestone.week} (${milestone.dates}) - Responsible: ${milestone.team}</time>
                     <p class="text-base font-normal text-gray-300">${milestone.goal}</p>
                 </div>
             `;
@@ -601,88 +706,7 @@
             timelineObserver.observe(item);
         });
 
-        // --- Weekly Meetings ---
-        const meetingListContainer = document.getElementById('meeting-list-container');
-        const upcomingMeetingCard = document.getElementById('upcoming-meeting-card');
-        const allMeetings = [];
-        const projectStartDate = new Date('2025-10-01T14:00:00'); // Wednesday 2 PM
-
-        function generateCalendarLink(title, goal, date) {
-            const startTime = date;
-            const endTime = new Date(startTime.getTime() + 60 * 60 * 1000); // Add 1 hour
-
-            const toISOStringWithoutDashes = (d) => {
-                return d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-            };
-
-            const formattedStartTime = toISOStringWithoutDashes(startTime);
-            const formattedEndTime = toISOStringWithoutDashes(endTime);
-
-            const eventTitle = encodeURIComponent(`Project Meeting: ${title}`);
-            const eventDetails = encodeURIComponent(`Weekly sync for the Smart Home IoT project.\n\nThis week's focus:\n- ${goal}`);
-            const eventDates = `${formattedStartTime}/${formattedEndTime}`;
-
-            return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${eventDates}&details=${eventDetails}&location=Google+Meet`;
-        }
-        
-        milestones.forEach((milestone) => {
-            const meetingDate = new Date(projectStartDate);
-            meetingDate.setDate(projectStartDate.getDate() + ((milestone.week - 1) * 7));
-            allMeetings.push({
-                week: milestone.week,
-                title: milestone.meetingTitle,
-                desc: milestone.meetingDesc,
-                goal: milestone.goal,
-                date: meetingDate,
-                link: generateCalendarLink(milestone.meetingTitle, milestone.goal, meetingDate)
-            });
-        });
-
-        const now = new Date();
-        const upcomingMeeting = allMeetings.find(m => m.date > now);
-
-        if (upcomingMeeting) {
-            upcomingMeetingCard.innerHTML = `
-                <p class="text-2xl font-bold text-sky-300">${upcomingMeeting.title}</p>
-                <p class="text-lg text-gray-300 mb-4">${upcomingMeeting.date.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'short' })} @ ${upcomingMeeting.date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}</p>
-                <p class="text-gray-400 text-sm mb-6">${upcomingMeeting.desc}</p>
-                <a href="${upcomingMeeting.link}" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 px-4 rounded-lg mt-6 transition-colors">
-                    Add to Calendar
-                </a>
-            `;
-        } else {
-            upcomingMeetingCard.innerHTML = `<p class="text-lg text-gray-300">All project meetings have concluded.</p>`;
-        }
-        
-        allMeetings.forEach((meeting) => {
-            const isPast = meeting.date < now;
-            const item = document.createElement('div');
-            item.className = 'timeline-item futuristic-card p-5 rounded-xl';
-            item.innerHTML = `
-                <div class="${isPast ? 'text-gray-500 line-through' : ''}">
-                    <h4 class="font-bold text-lg ${isPast ? '' : 'text-white'}">Week ${meeting.week}: ${meeting.title}</h4>
-                    <p class="text-sm ${isPast ? 'text-gray-600' : 'text-gray-400'}">${meeting.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
-                    <p class="text-sm mt-2 ${isPast ? 'text-gray-600' : 'text-gray-400'}">${meeting.desc}</p>
-                </div>
-            `;
-            meetingListContainer.appendChild(item);
-        });
-
-        const meetingObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 100);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('#meeting-list-container .timeline-item').forEach(item => {
-            meetingObserver.observe(item);
-        });
-
-        // Animate Meeting Logs
+        // --- Animate Meeting Logs (Keeping this section as requested) ---
         const logObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
