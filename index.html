@@ -641,6 +641,10 @@
 
         // --- Animated Milestones ---
         const timelineContainer = document.getElementById('timeline-container');
+        
+        // Clear container to prevent duplication
+        timelineContainer.innerHTML = '';
+
         const today = new Date();
         const projectStartDate = new Date('2025-10-01'); // Start date for week calculations
         const weekNumber = Math.floor((today - projectStartDate) / (1000 * 60 * 60 * 24 * 7)) + 1;
